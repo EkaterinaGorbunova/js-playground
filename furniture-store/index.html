@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:ital,wght@0,300;1,300&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <div class="header">
+        <h1>We are finally open!</h1>
+    </div>
+
+    <div class="container">
+        <div class="item one selected">
+            <h4>Berta</h4>
+            <p class="par">Interchangeable sectional sofa-bed with storage</p>
+            <p class="price">5000$</p>
+        </div>
+
+        <div class="item two">
+            <h4>Belgravia</h4>
+            <p class="par">Sofa-bed with memory foam mattress</p>
+            <p class="price">2000$</p>
+        </div>
+
+        <div class="item three">
+            <h4>Foodia</h4>
+            <p class="par">Recycled teak end table</p>
+            <p class="price">1000$</p>
+        </div>
+
+        <div class="item four">
+            <h4>Family</h4>
+            <p class="par">Acacia wood dining table</p>
+            <p class="price">2500$</p>
+        </div>
+
+        <div class="item five">
+            <h4>Shesn</h4>
+            <p class="par">Tufted velvet sofa-bed</p>
+            <p class="price">2100$</p>
+        </div>
+
+        <div class="item six">
+            <h4>Rabia</h4>
+            <p class="par">
+                Tufted upholstered wingback queen size bed with storage
+            </p>
+            <p class="price">5000$</p>
+        </div>
+    </div>
+
+    <div class="header">
+        <h3>Send us a message</h3>
+    </div>
+
+    <form action="https://formspree.io/f/xdojlvpd" method="POST">
+        <!-- form confirmation language -->
+        <!-- https://help.formspree.io/hc/en-us/articles/360013468374-Localization-and-translation -->
+        <input type="hidden" name="_language" value="en" />
+
+        <div class="header">
+            <label>
+                Your email:
+                <input class="text-input" type="email" name="email" placeholder="Your email..." required=""/>
+            </label>
+        </div>
+
+        <div class="header">
+            <label>
+                Your message:
+                <textarea class="text-input" name="message" placeholder="Type your message..." required=""></textarea>
+            </label>
+        </div>
+        <br />
+        <div class="header">
+            <button class="btn" type="submit">Send</button>
+        </div>
+    </form>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

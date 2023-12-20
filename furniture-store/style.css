@@ -1,0 +1,168 @@
+body {
+    background-color: #EDE4E0;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+h1,
+h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 60px;
+}
+
+.container {
+    display: flex;
+}
+
+.item {
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Dancing Script', cursive;
+    flex: 1;
+    margin: 5px;
+    position: relative;
+}
+
+h4 {
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    background-color: #ffffff;
+    color: #000000;
+    /* hide the text */
+    opacity: 0;
+    /* OR font-size: 0*/
+}
+
+.par {
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    background-color: #ffffff;
+    color: #000000;
+    /* hide the text */
+    opacity: 0;
+    /* OR font-size: 0*/
+}
+
+.price {
+    position: absolute;
+    bottom: 60px;
+    left: 40px;
+    background-color: #ffffff;
+    color: #000000;
+    /* hide the text */
+    opacity: 0;
+    /* OR font-size: 0*/
+}
+
+.selected {
+    flex: 4;
+}
+
+.selected h4 {
+    font-size: 40px;
+    transition: all 1s ease-in;
+    /* display the text */
+    opacity: 1;
+}
+
+.selected .par {
+    font-size: 30px;
+    transition: all 1s ease-in;
+    /* display the text */
+    opacity: 1;
+}
+
+.selected .price {
+    font-size: 35px;
+    transition: all 1s ease-in;
+    /* display the text */
+    opacity: 1;
+}
+
+label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+}
+
+.text-input {
+    background-color: #EDE4E0;
+    border: none;
+    padding: 12px 20px;
+}
+
+.btn {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    background-color: #9cb4cc;
+    padding: 0px 40px 4px;
+    border: 2px solid #7895B2;
+    border-radius: 20px;
+    margin: 20px;
+    color: #000000;
+}
+
+.one {
+    background-image: url(1.webp);
+}
+
+.two {
+    background-image: url(2.webp);
+}
+
+.three {
+    background-image: url(3.webp);
+}
+
+.four {
+    background-image: url(4.webp);
+}
+
+.five {
+    background-image: url(5.webp);
+}
+
+.six {
+    background-image: url(6.webp);
+}
+
+@media all and (max-width: 800px) {
+
+    h1,
+    h3 {
+        font-size: 40px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .selected h4 {
+        font-size: 30px;
+    }
+
+    .selected .par {
+        font-size: 20px;
+    }
+
+    .selected .price {
+        font-size: 25px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    .btn {
+        font-size: 20px;
+        padding: 0px 30px 4px;
+    }
+
+}

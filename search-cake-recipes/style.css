@@ -1,0 +1,108 @@
+body {
+    background-color: #290001;
+}
+
+
+h1 {
+    color: #C87941;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 40px;
+    text-align: center;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+    color: #DBCBBD;
+    font-family: 'Dancing Script';
+    font-size: 36px;
+    text-align: center;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    color: #DBCBBD;
+    font-family: 'Dancing Script';
+    font-size: 26px;
+}
+
+.input-field {
+    display: flex;
+    justify-content: center;
+}
+
+#search {
+    flex: 1;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    background: #DBCBBD;
+    border: none;
+    border-radius: 3px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cake {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px
+}
+
+a {
+    color: #C87941;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Kaushan Script', cursive;
+    text-decoration: none;
+    font-size: 42px;
+}
+
+.picture {
+    width: 400px;
+    height: 500px
+}
+
+img {
+    border-radius: 10px;
+}
+
+p {
+    text-align: center;
+}
+
+
+@media all and (max-width: 800px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    a {
+        font-size: 32px;
+    }
+
+    .picture {
+        width: 300px;
+        height: 400px
+    }
+
+    #search {
+        font-size: 12px;
+    }
+
+    .description {
+        font-size: 28px;
+    }
+}

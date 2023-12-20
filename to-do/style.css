@@ -1,0 +1,94 @@
+.header,
+.container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+/* linear-gradient() -> https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient */
+h1 {
+    font-size: 50px;
+    background: linear-gradient(90deg,
+            rgba(30, 28, 61, 1) 0%,
+            rgba(126, 63, 5, 1) 29%,
+            rgba(0, 166, 199, 1) 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+}
+
+.inputField {
+    padding: 10px;
+    width: 40%;
+    border: none;
+    border-radius: 6px;
+}
+
+.btn {
+    padding: 20px;
+    background-color: #9cb4cc;
+    border: none;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+
+body {
+    background-image: url(cup.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    background-position: center;
+    background-color: rgb(204,231,232);
+}
+
+.toDoAdded {
+    background: rgba(126, 63, 5, 1);
+    list-style-type: none;
+    padding: 20px;
+    width: 43%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+    border-bottom: 1px solid #ffffff;
+    border-radius: 4px;
+}
+
+.toDoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    list-style-type: none;
+}
+
+.toDoCompleted {
+    background: #d7c0ae;
+    color: #11324d;
+    font-weight: bold;
+    text-decoration: line-through;
+    transition: all 1s ease;
+}
+
+@media all and (max-width: 800px) {
+    h1 {
+        font-size: 40px;
+    }
+}
+
+@media all and (max-width: 500px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .btn {
+        padding: 10px;
+        background-color: #9cb4cc;
+        border: none;
+    }
+
+    .toDoAdded {
+        padding: 10px;
+        width: 40%;
+        font-size: 18px;
+    }
+}

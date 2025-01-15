@@ -1,6 +1,6 @@
 # Movie Tracker App
 
-
+### [Demo](https://movie-tracker-devapp.glitch.me/)
 
 The Movie Tracker App allows users to add movies they watch to a dynamic list and track the number of times each movie is watched. The app prevents duplicates in both the movie list and the movie history table.
 

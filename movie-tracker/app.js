@@ -3,6 +3,7 @@ let inp = document.querySelector('input');
 const myMovieList = document.querySelector('ul');
 const movieHistory = {}; // Object to track movies and their watch counts
 const movieHistoryCard = document.getElementById('movieHistoryCard');
+const searchInput = document.querySelector('#filter');
 
 // Add movie to the displayed list
 function addToMovieList(userTypedText) {
@@ -77,7 +78,6 @@ function clearInput() {
   inp.value = '';
 }
 
-const searchInput = document.querySelector('#filter');
 searchInput.addEventListener('keyup', function (event) {
   const word = event.target.value.toLowerCase();
 
@@ -108,7 +108,7 @@ function clearMovies() {
 
 // This function is executed when the user clicks [ADD MOVIE] button.
 function addMovie() {
-  const userTypedText = inp.value.trim(); // Get value of input and trim whitespace and make it to lowrcase
+  const userTypedText = inp.value.trim().toLowerCase(); // Get value of input and trim whitespace and make it to lowrcase
   if (!userTypedText) {
     alert('Enter your movie name.'); // Prevent adding empty movies
     return; // Stop function execution

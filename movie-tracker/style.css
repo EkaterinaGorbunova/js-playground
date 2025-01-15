@@ -1,14 +1,13 @@
 .flex {
-    display: block;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .container {
-    height: 90vh;
-  }
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  li:hover {
-    cursor: pointer;
-  }
-  
+.container {
+  height: 90vh;
+}
+
+.list-group {
+  list-style: none;
+}

@@ -1,87 +1,51 @@
-// Add DOM selectors to target input and UL movie list
+
 let inp = document.querySelector('input');
 const myMovieList = document.querySelector('ul');
-const movieHistory = {}; // Object to track movies and their watch counts
 const movieHistoryCard = document.getElementById('movieHistoryCard');
 const searchInput = document.querySelector('#filter');
+const myMovies = {};
 
-// Add movie to the displayed list
-function addToMovieList(userTypedText) {
-  // Check if the movie is already in the displayed list
-  let movieAlreadyExists = false;
-
-  for (let i = 0; i < myMovieList.children.length; i++) {
-    if (myMovieList.children[i].textContent === userTypedText) {
-      movieAlreadyExists = true;
-      break;
-    }
-  }
-
-  // Add the movie if it doesn't exist
-  if (!movieAlreadyExists) {
-    const li = document.createElement('li');
-    li.className = 'item';
-    li.textContent = userTypedText; // Set text content directly
-    myMovieList.appendChild(li); // Add the new list item to the movie list
-  }
+function renderMovieList() {
+  myMovieList.innerHTML = Object.keys(myMovies)
+    .map((value) => `<li class='item'>${value}</li>`)
+    .join('');
 }
 
-// Update the movie history (increment count or add new movie)
-function updateMovieHistory(userTypedText) {
-  // Update the history count
-  movieHistory[userTypedText]
-    ? movieHistory[userTypedText]++
-    : (movieHistory[userTypedText] = 1);
-
-  // Update the Movie History table
-  addToMovieTable(movieHistory);
-}
-
-// Add or update the movie history table
-function addToMovieTable(movieHistory) {
-  // Remove any existing table
+function renderMovieTable() {
   const existingTable = document.getElementById('movieHistoryTable');
   existingTable && existingTable.remove();
 
-  // Create a new table
   const table = document.createElement('table');
   table.id = 'movieHistoryTable';
   table.className = 'table';
 
   table.innerHTML = `
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Watched</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${Object.entries(movieHistory)
-        .map(
-          ([movie, count]) => `
+      <thead>
+        <tr>
+          <th>Movies</th>
+          <th>Watched</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${Object.keys(myMovies)
+          .map(
+            (key) => `
           <tr>
-            <td>${movie}</td>
-            <td>${count}</td>
+            <td>${key}</td>
+            <td>${myMovies[key]}</td>
           </tr>
-        `
-        )
-        .join('')}
-    </tbody>
-  `;
+          `
+          )
+          .join('')}
+      </tbody>
+    `;
 
-  // Append the table to the Movie History Card
   movieHistoryCard.appendChild(table);
-}
-
-// Example of a simple function that clears the input after a user types something in
-function clearInput() {
-  inp.value = '';
 }
 
 searchInput.addEventListener('keyup', function (event) {
   const word = event.target.value.toLowerCase();
 
-  // Select all the list items within the movie list
   const lis = myMovieList.querySelectorAll('li.item');
 
   lis.forEach((movie) => {
@@ -91,39 +55,40 @@ searchInput.addEventListener('keyup', function (event) {
   });
 });
 
-// Function to clear the movie list and history
-function clearMovies() {
-  // To delete all children of the <ul></ul> (meaning all <li>'s)..we can wipe out the <ul>'s innerHTML
-  myMovieList.innerHTML = '';
-
-  // Clear all keys in the movie history object
-  for (const key in movieHistory) {
-    delete movieHistory[key];
-  }
-
-  // Remove the movie history table
-  const existingTable = document.getElementById('movieHistoryTable');
-  if (existingTable) existingTable.remove();
+function clearInput() {
+  inp.value = '';
 }
 
-// This function is executed when the user clicks [ADD MOVIE] button.
-function addMovie() {
-  const userTypedText = inp.value.trim().toLowerCase(); // Get value of input and trim whitespace and make it to lowrcase
-  if (!userTypedText) {
-    alert('Enter your movie name.'); // Prevent adding empty movies
-    return; // Stop function execution
+function clearMovies() {
+  myMovieList.innerHTML = '';
+
+  for (const key in myMovies) {
+    delete myMovies[key];
   }
 
-  // Add to the movie list
-  addToMovieList(userTypedText);
+  const existingTable = document.getElementById('movieHistoryTable');
+  existingTable && existingTable.remove();
+}
 
-  // Update the movie history and table
-  updateMovieHistory(userTypedText);
+function addMovie() {
+  const userTypedText = inp.value.trim().toLowerCase();
 
-  // Clear the input field
+  if (!userTypedText) {
+    alert('Enter your movie name.');
+    return;
+  }
+
+  !(userTypedText in myMovies)
+    ? (myMovies[userTypedText] = 1)
+    : myMovies[userTypedText]++;
+
+  renderMovieList(myMovies);
+
+  renderMovieTable(myMovies);
+
+  // addToLocalStorageDatabase(myMovies);
+
   clearInput();
 }
 
-// Add movie when pressing Enter
 inp.addEventListener('keyup', (event) => event.key === 'Enter' && addMovie());
-

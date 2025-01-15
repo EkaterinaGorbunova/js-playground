@@ -19,6 +19,7 @@ function addToMovieList(userTypedText) {
   // Add the movie if it doesn't exist
   if (!movieAlreadyExists) {
     const li = document.createElement('li');
+    li.className = 'item';
     li.textContent = userTypedText; // Set text content directly
     myMovieList.appendChild(li); // Add the new list item to the movie list
   }
@@ -27,7 +28,9 @@ function addToMovieList(userTypedText) {
 // Update the movie history (increment count or add new movie)
 function updateMovieHistory(userTypedText) {
   // Update the history count
-  movieHistory[userTypedText] ? movieHistory[userTypedText]++ : movieHistory[userTypedText] = 1;
+  movieHistory[userTypedText]
+    ? movieHistory[userTypedText]++
+    : (movieHistory[userTypedText] = 1);
 
   // Update the Movie History table
   addToMovieTable(movieHistory);
@@ -47,19 +50,21 @@ function addToMovieTable(movieHistory) {
   table.innerHTML = `
     <thead>
       <tr>
-        <th>Movie Name</th>
-        <th>Watch Count</th>
+        <th>Title</th>
+        <th>Watched</th>
       </tr>
     </thead>
     <tbody>
-      ${Object.entries(movieHistory).map(
-        ([movie, count]) => `
+      ${Object.entries(movieHistory)
+        .map(
+          ([movie, count]) => `
           <tr>
             <td>${movie}</td>
             <td>${count}</td>
           </tr>
         `
-      ).join('')}
+        )
+        .join('')}
     </tbody>
   `;
 
@@ -67,14 +72,28 @@ function addToMovieTable(movieHistory) {
   movieHistoryCard.appendChild(table);
 }
 
-// Function to clear input
+// Example of a simple function that clears the input after a user types something in
 function clearInput() {
   inp.value = '';
 }
 
+const searchInput = document.querySelector('#filter');
+searchInput.addEventListener('keyup', function (event) {
+  const word = event.target.value.toLowerCase();
+
+  // Select all the list items within the movie list
+  const lis = myMovieList.querySelectorAll('li.item');
+
+  lis.forEach((movie) => {
+    movie.textContent.toLowerCase().includes(word)
+      ? (movie.style.display = 'block')
+      : (movie.style.display = 'none');
+  });
+});
+
 // Function to clear the movie list and history
 function clearMovies() {
-  // Clear the movie list <ul>
+  // To delete all children of the <ul></ul> (meaning all <li>'s)..we can wipe out the <ul>'s innerHTML
   myMovieList.innerHTML = '';
 
   // Clear all keys in the movie history object
@@ -87,9 +106,9 @@ function clearMovies() {
   if (existingTable) existingTable.remove();
 }
 
-// Add a movie to the list and the history
+// This function is executed when the user clicks [ADD MOVIE] button.
 function addMovie() {
-  const userTypedText = inp.value.trim().toLowerCase(); // Get value of input and trim whitespace and make it to lowrcase
+  const userTypedText = inp.value.trim(); // Get value of input and trim whitespace and make it to lowrcase
   if (!userTypedText) {
     alert('Enter your movie name.'); // Prevent adding empty movies
     return; // Stop function execution
@@ -104,3 +123,7 @@ function addMovie() {
   // Clear the input field
   clearInput();
 }
+
+// Add movie when pressing Enter
+inp.addEventListener('keyup', (event) => event.key === 'Enter' && addMovie());
+
